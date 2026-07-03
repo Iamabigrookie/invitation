@@ -6,7 +6,7 @@
 <title>💌 约会邀请函</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 <style>
 /* ==========================================
    Night Sky Invitation v2 — Aurora + 3D Card
@@ -349,15 +349,18 @@ body {
 
 /* Message */
 .message {
+  font-family: 'Cormorant Garamond', 'Playfair Display', 'Noto Serif SC', serif;
   font-size: 1.2rem;
+  font-style: italic;
   line-height: 2.3;
   color: var(--text);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
 .message em {
   font-style: normal;
-  color: var(--rose);
   font-weight: 600;
+  color: var(--rose);
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
 }
 
 /* Date */
@@ -386,7 +389,9 @@ body {
 /* Details */
 .details {
   margin: 0.8rem 0 0.3rem;
+  font-family: 'Cormorant Garamond', 'Playfair Display', 'Noto Serif SC', serif;
   font-size: 0.95rem;
+  font-style: italic;
   color: var(--text-light);
   line-height: 2.1;
   letter-spacing: 0.04em;
@@ -400,10 +405,10 @@ body {
 /* Signature */
 .signature {
   margin-top: 2rem;
-  font-family: 'Ma Shan Zheng', 'Noto Serif SC', cursive;
-  font-size: 1.1rem;
+  font-family: 'Great Vibes', 'Ma Shan Zheng', 'Noto Serif SC', cursive;
+  font-size: 1.35rem;
   color: var(--text-light);
-  opacity: 0.8;
+  opacity: 0.85;
   line-height: 1.8;
 }
 
@@ -651,12 +656,12 @@ var CONFIG = {
   eyebrow:  "— You're Invited —",
   title:    "约会邀请函",
   subtitle: "致 亲爱的支支",
-  message:  "这个<em>周六</em>，<br>I am looking forward to meeting you<br>要和你一直亲亲呢~",
+  message:  "This <em>Saturday</em>,<br>I am looking forward to meeting you<br>Endless kisses, just for you~",
   date:     "2026 · 07 · 04",
   dateLabel:"星 期 六",
   time:     "Saturday",
   location: "Anywhere",
-  signature:"—— 不见不散<br><span style=\"font-size:0.82rem;opacity:0.65;\">From Yjzzz</span>",
+  signature:"—— Be there with you<br><span style=\"font-size:0.82rem;opacity:0.65;\">From Yjzzz</span>",
 };
 
 function renderCard(cfg) {
@@ -690,7 +695,7 @@ function saveForm() {
   CONFIG.eyebrow = document.getElementById('fEyebrow').value;
   CONFIG.title = document.getElementById('fTitle').value;
   CONFIG.subtitle = document.getElementById('fSubtitle').value;
-  var msg = document.getElementById('fMessage').value.replace(/\n/g,'<br>').replace(/周六/g,'<em>周六</em>');
+  var msg = document.getElementById('fMessage').value.replace(/\n/g,'<br>').replace(/Saturday/gi,'<em>Saturday</em>');
   CONFIG.message = msg;
   CONFIG.date = document.getElementById('fDate').value;
   CONFIG.dateLabel = document.getElementById('fDateLabel').value;
