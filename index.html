@@ -14,9 +14,9 @@
 
 :root {
   --night: #080c1a;
-  --aurora-purple: rgba(99, 57, 148, 0.18);
-  --aurora-teal:   rgba(35, 110, 130, 0.14);
-  --aurora-rose:   rgba(150, 55, 85, 0.12);
+  --aurora-purple: rgba(120, 40, 120, 0.22);
+  --aurora-teal:   rgba(180, 60, 100, 0.16);
+  --aurora-rose:   rgba(200, 45, 80, 0.15);
   --gold:       #d4af4e;
   --gold-light: #efe0b0;
   --gold-dark:  #9b7a2e;
@@ -101,8 +101,8 @@ body {
   position: fixed;
   top: 11%;
   right: 14%;
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: radial-gradient(circle at 55% 45%, #fffef0 0%, #f5e8c8 40%, #e0c880 100%);
   box-shadow:
@@ -121,10 +121,10 @@ body {
 .moon::after {
   content: '';
   position: absolute;
-  top: 8px;
-  right: 12px;
-  width: 50px;
-  height: 50px;
+  top: 10px;
+  right: 15px;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
   background: radial-gradient(circle at 45% 45%, var(--night) 0%, #0a0e20 100%);
 }
@@ -192,7 +192,7 @@ body {
   position: relative;
   background: linear-gradient(160deg, var(--paper) 0%, #f8f3e8 40%, var(--cream) 100%);
   border-radius: 3px;
-  padding: 3.5rem 2.5rem 2.5rem;
+  padding: 3.8rem 2.8rem 2.8rem;
   box-shadow:
     0 0 0 1px rgba(212,175,78,0.25),
     0 4px 24px rgba(0,0,0,0.25),
@@ -290,7 +290,7 @@ body {
 }
 .eyebrow {
   font-family: 'Playfair Display', serif;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--text-light);
@@ -300,7 +300,7 @@ body {
 
 .gold-title {
   font-family: 'ZCOOL XiaoWei', 'Noto Serif SC', 'STSongti-SC', serif;
-  font-size: 2.4rem;
+  font-size: 3rem;
   font-weight: 400;
   letter-spacing: 0.12em;
   background: linear-gradient(160deg,
@@ -320,7 +320,7 @@ body {
 
 .subtitle {
   font-family: 'Ma Shan Zheng', 'Noto Serif SC', cursive;
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   color: var(--rose);
   letter-spacing: 0.06em;
   opacity: 0.85;
@@ -349,8 +349,8 @@ body {
 
 /* Message */
 .message {
-  font-size: 1.08rem;
-  line-height: 2.2;
+  font-size: 1.2rem;
+  line-height: 2.3;
   color: var(--text);
   letter-spacing: 0.05em;
 }
@@ -363,30 +363,30 @@ body {
 /* Date */
 .date-box {
   display: inline-block;
-  margin: 1.6rem 0 1rem;
-  padding: 0.7rem 1.8rem;
+  margin: 1.8rem 0 1.2rem;
+  padding: 0.8rem 2rem;
   border: 1px solid rgba(212,175,78,0.35);
   border-radius: 2px;
   background: rgba(212,175,78,0.03);
 }
 .date-main {
   font-family: 'Playfair Display', 'Noto Serif SC', serif;
-  font-size: 1.4rem;
+  font-size: 1.65rem;
   font-weight: 600;
   color: var(--gold-dark);
   letter-spacing: 0.08em;
 }
 .date-sub {
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   color: var(--text-light);
   letter-spacing: 0.12em;
-  margin-top: 0.2rem;
+  margin-top: 0.25rem;
 }
 
 /* Details */
 .details {
   margin: 0.8rem 0 0.3rem;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   color: var(--text-light);
   line-height: 2.1;
   letter-spacing: 0.04em;
@@ -399,9 +399,9 @@ body {
 
 /* Signature */
 .signature {
-  margin-top: 1.8rem;
+  margin-top: 2rem;
   font-family: 'Ma Shan Zheng', 'Noto Serif SC', cursive;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--text-light);
   opacity: 0.8;
   line-height: 1.8;
@@ -410,12 +410,34 @@ body {
 /* Bottom hearts */
 .hearts-row {
   margin-top: 1.2rem;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   animation: floatHearts 4s ease-in-out infinite;
 }
 @keyframes floatHearts {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-5px); }
+}
+
+/* ===== Floating Hearts (slow drift up) ===== */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.floating-heart {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: heartDrift var(--fh-dur) ease-in-out infinite;
+  animation-delay: var(--fh-delay);
+  opacity: 0;
+  filter: blur(0.8px);
+}
+@keyframes heartDrift {
+  0%   { opacity:0; transform: translateY(0) translateX(0) rotate(0deg) scale(0.5); }
+  10%  { opacity:0.55; }
+  85%  { opacity:0.45; }
+  100% { opacity:0; transform: translateY(-105vh) translateX(var(--fh-dx)) rotate(var(--fh-rot)) scale(1.1); }
 }
 
 /* ===== Ripple ===== */
@@ -469,9 +491,10 @@ body {
   .card {
     padding: 3rem 1.4rem 2rem;
   }
-  .gold-title { font-size:1.8rem; }
-  .message { font-size:0.95rem; line-height:2; }
-  .date-main { font-size:1.2rem; }
+  .gold-title { font-size:2.3rem; }
+  .message { font-size:1.05rem; line-height:2.1; }
+  .date-main { font-size:1.4rem; }
+  .subtitle { font-size:1.3rem; }
   .seal { width:60px; height:60px; top:-30px; }
   .seal-icon { font-size:24px; }
   .moon { width:44px; height:44px; top:8%; right:8%; }
@@ -480,8 +503,10 @@ body {
 
 @media (max-width: 380px) {
   .card { padding:2.5rem 1rem 1.6rem; }
-  .gold-title { font-size:1.5rem; }
-  .subtitle { font-size:1.15rem; }
+  .gold-title { font-size:1.9rem; }
+  .subtitle { font-size:1.2rem; }
+  .message { font-size:0.95rem; }
+  .date-main { font-size:1.2rem; }
 }
 
 /* ===== EDIT BUTTON ===== */
@@ -546,6 +571,9 @@ body {
 <!-- Shooting Stars container -->
 <div id="shootingStars" aria-hidden="true"></div>
 
+<!-- Floating Hearts -->
+<div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
+
 <!-- Sparkle Canvas -->
 <canvas id="sparkles" aria-hidden="true"></canvas>
 
@@ -556,7 +584,7 @@ body {
 
       <!-- Wax Seal -->
       <button class="seal" id="seal" aria-label="点击互动">
-        <span class="seal-icon">💝</span>
+        <span class="seal-icon">❤️</span>
       </button>
 
       <!-- Content -->
@@ -586,7 +614,7 @@ body {
 
       <p class="signature" id="elSignature"></p>
 
-      <div class="hearts-row" aria-hidden="true">✨ 💕 ✨</div>
+      <div class="hearts-row" aria-hidden="true">💗 ✨ 💕 ✨ 💗</div>
     </div>
     <div class="card-glow" id="cardGlow"></div>
   </div>
@@ -623,11 +651,11 @@ var CONFIG = {
   eyebrow:  "— You're Invited —",
   title:    "约会邀请函",
   subtitle: "致 亲爱的支支",
-  message:  "这个<em>周六</em>，<br>I am looking forward to meeting you<br><br>要和你一直亲亲呢~",
+  message:  "这个<em>周六</em>，<br>I am looking forward to meeting you<br>要和你一直亲亲呢~",
   date:     "2026 · 07 · 04",
   dateLabel:"星 期 六",
   time:     "Saturday",
-  location: "anywhere",
+  location: "Anywhere",
   signature:"—— 不见不散<br><span style=\"font-size:0.82rem;opacity:0.65;\">From Yjzzz</span>",
 };
 
@@ -742,6 +770,31 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay.cla
   setTimeout(spawn, 1500);
   setTimeout(spawn, 4000);
   setTimeout(spawn, 7500);
+})();
+
+// ==========================================
+// 2.5 FLOATING HEARTS (slow romantic drift)
+// ==========================================
+(function() {
+  const container = document.getElementById('floatingHearts');
+  const hearts = ['❤️', '🩷', '💕', '💖', '💗', '🫧', '🌸', '✨', '💝', '🪷'];
+  const COUNT = 20;
+  for (let i = 0; i < COUNT; i++) {
+    const el = document.createElement('span');
+    el.className = 'floating-heart';
+    el.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    const size = Math.random() * 1.6 + 0.8;
+    el.style.cssText = `
+      left:${Math.random() * 95}%;
+      bottom:-${Math.random() * 30 + 5}%;
+      font-size:${size}rem;
+      --fh-dur:${Math.random() * 15 + 16}s;
+      --fh-delay:${Math.random() * 14}s;
+      --fh-dx:${(Math.random() - 0.5) * 120}px;
+      --fh-rot:${(Math.random() - 0.5) * 60}deg;
+    `;
+    container.appendChild(el);
+  }
 })();
 
 // ==========================================
